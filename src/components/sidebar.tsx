@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
   BarChart3,
   BookOpen,
@@ -6,23 +7,23 @@ import {
   Settings,
   Users,
   History,
-  FileText,
   Menu,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Dashboard', icon: Home, href: '#' },
-  { name: 'Books', icon: BookOpen, href: '#' },
-  { name: 'Members', icon: Users, href: '#' },
-  { name: 'Circulation', icon: History, href: '#' },
-  { name: 'Reports', icon: BarChart3, href: '#' },
-  { name: 'Settings', icon: Settings, href: '#' },
+  { name: 'Dashboard', icon: Home, href: '/' },
+  { name: 'Books', icon: BookOpen, href: '/books' },
+  { name: 'Members', icon: Users, href: '/members' },
+  { name: 'Circulation', icon: History, href: '/circulation' },
+  { name: 'Reports', icon: BarChart3, href: '/reports' },
+  { name: 'Settings', icon: Settings, href: '/settings' },
 ];
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <>
@@ -46,20 +47,22 @@ export function Sidebar() {
         </div>
         <nav className="flex flex-col gap-1 p-3 md:p-4">
           {navigation.map((item) => (
-            <a
+            <NavLink
               key={item.name}
-              href={item.href}
-              className={cn(
-                'group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-600',
+              to={item.href}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => cn(
+                'group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium',
                 'transition-all duration-200 hover:bg-gray-50 hover:text-blue-600',
                 'active:scale-[0.98]',
-                item.name === 'Dashboard' && 'bg-blue-50 text-blue-600'
+                isActive 
+                  ? 'bg-blue-50 text-blue-600' 
+                  : 'text-gray-600'
               )}
-              onClick={() => setIsOpen(false)}
             >
               <item.icon className="h-5 w-5" />
               {item.name}
-            </a>
+            </NavLink>
           ))}
         </nav>
       </div>

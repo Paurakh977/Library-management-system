@@ -1,5 +1,5 @@
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { Card } from '../ui/Card';
+import { Card } from '../ui/card';
 
 const data = [
   { month: 'Jan', loans: 2620 },
