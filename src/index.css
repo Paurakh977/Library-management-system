@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 45 50 80;
+    --color-secondary: 66 77 131;
+    --color-accent: 242 177 56;
+    --color-background: 245 247 250;
+    --color-text: 26 27 37;
+  }
+ 
+  html, body, #root {
+    @apply h-full overflow-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl bg-white/50 p-6 
+           shadow-[0_2px_8px_-1px_rgba(0,0,0,0.05)] 
+           backdrop-blur-sm 
+           ring-1 ring-black/[0.03] 
+           transition-all duration-300 ease-in-out
+           hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)] 
+           hover:ring-black/[0.04] 
+           hover:-translate-y-0.5
+           hover:bg-gradient-to-br from-white to-gray-50/50;
+  }
+
+  /* Status badges */
+  .badge {
+    @apply rounded-full px-2.5 py-1 text-xs font-medium 
+           ring-1 ring-black/[0.03]
+           shadow-sm
+           transition-all duration-200;
+  }
+
+  /* Navigation items */
+  .nav-link {
+    @apply rounded-lg px-4 py-2.5 
+           transition-all duration-200 
+           hover:bg-blue-50/50 
+           hover:shadow-sm
+           active:scale-[0.98];
+  }
+
+  /* Search bar */
+  .search-input {
+    @apply rounded-xl border bg-white/50 
+           shadow-sm backdrop-blur-sm
+           transition-all duration-200 
+           hover:shadow-md
+           focus-within:shadow-[0_4px_16px_-4px_rgba(59,130,246,0.15)]
+           focus-within:ring-2 focus-within:ring-blue-100;
+  }
+
+  .heading-1 {
+    @apply text-3xl font-semibold text-text;
+  }
+
+  .heading-2 {
+    @apply text-2xl font-semibold text-text;
+  }
+
+  .heading-3 {
+    @apply text-xl font-medium text-text;
+  }
+
+  .body-text {
+    @apply text-base text-text/80;
+  }
+
+  .label {
+    @apply text-sm font-medium text-text/60;
+  }
+}
+
+@layer utilities {
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(229 231 235 / 0.5) transparent;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgb(229 231 235 / 0.5);
+    border-radius: 2px;
+  }
+
+  .overflow-y-auto:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219 / 0.8);
+  }
+}
