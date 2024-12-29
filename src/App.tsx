@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Header } from './components/header';
 import { Sidebar } from './components/sidebar';
 import { BooksPage } from './components/pages/books';
+import { MembersPage } from './components/pages/members';
 import { Stats } from './components/dashboard/Stats';
 import { CirculationChart } from './components/charts/CirculationChart';
 import { CategoryChart } from './components/charts/CategoryChart';
@@ -49,7 +50,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<DashboardContent />} />
               <Route path="/books" element={<BooksPage />} />
-              <Route path="/members" element={<div>Members Page (Coming Soon)</div>} />
+              <Route path="/members" element={<MembersPage />} />
               <Route path="/circulation" element={<div>Circulation Page (Coming Soon)</div>} />
               <Route path="/reports" element={<div>Reports Page (Coming Soon)</div>} />
               <Route path="/settings" element={<div>Settings Page (Coming Soon)</div>} />
